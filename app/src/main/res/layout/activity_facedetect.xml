@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:keepScreenOn="true"
+    tools:context=".SecondActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true">
+                    <Button
+                        android:id="@+id/face_recognize_addface"
+                        android:textColor="@color/colorPrimary"
+                        android:padding="8dp"
+                        android:text="人脸注册"
+                        android:background="@drawable/touch_background"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true">
+                    <Button
+                        android:id="@+id/face_recognize_addrecognize"
+                        android:textColor="@color/colorPrimary"
+                        android:padding="8dp"
+                        android:text="人脸识别"
+                        android:background="@drawable/touch_background"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true">
+                    <Button
+                        android:id="@+id/face_recognize_deleteface"
+                        android:textColor="@color/colorPrimary"
+                        android:padding="8dp"
+                        android:text="人脸删除"
+                        android:background="@drawable/touch_background"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true">
+                <ImageView
+                    android:id="@+id/face_recognize_imageview"
+                    android:background="#000000"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp" />
+            </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/face_recognize_addface_layer"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="25dp"
+                    android:paddingLeft="25dp">
+                    <android.support.v7.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp"
+                        app:cardUseCompatPadding="true">
+                        <Button
+                            android:id="@+id/face_recognize_choosepic"
+                            android:textColor="@color/colorPrimary"
+                            android:padding="8dp"
+                            android:text="选择人脸照片"
+                            android:background="@drawable/touch_background"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </android.support.v7.widget.CardView>
+                    <android.support.design.widget.TextInputLayout
+                        android:hint="用户名"
+                        android:id="@+id/face_recognize_addface_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:textColor="@color/colorPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp"
+                        app:cardUseCompatPadding="true">
+                        <Button
+                            android:id="@+id/face_recognize_addface_addbutton"
+                            android:textColor="@color/colorPrimary"
+                            android:padding="8dp"
+                            android:text="注册"
+                            android:background="@drawable/touch_background"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="invisible"
+                    android:id="@+id/face_recognize_recognize_layer"
+                    android:background="#ffffff"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp"
+                        app:cardUseCompatPadding="true">
+                        <Button
+                            android:id="@+id/face_recognize_chooserecognizepic"
+                            android:textColor="@color/colorPrimary"
+                            android:padding="8dp"
+                            android:text="选择要识别的照片"
+                            android:background="@drawable/touch_background"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </android.support.v7.widget.CardView>
+                    <TextView
+                        android:id="@+id/face_recognize_result"
+                        android:textSize="24sp"
+                        android:textColor="@color/colorPrimary"
+                        android:gravity="center"
+                        android:layout_marginBottom="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="invisible"
+                    android:id="@+id/face_recognize_deleteface_layer"
+                    android:background="#ffffff"
+                    android:orientation="vertical"
+                    android:paddingRight="25dp"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/face_recognize_delete_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="用户名">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp"
+                        app:cardUseCompatPadding="true">
+                        <Button
+                            android:id="@+id/face_recognize_deleteface_deletebutton"
+                            android:textColor="@color/colorPrimary"
+                            android:padding="8dp"
+                            android:text="删除"
+                            android:background="@drawable/touch_background"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".forthactivity.CameraActivity"
+    tools:ignore="MissingDefaultResource">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.wonderkiln.camerakit.CameraView
+                android:id="@+id/camera"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <Button
+                android:id="@+id/camera_activity_cap_image"
+                android:text="点击拍照"
+                android:layout_above="@id/camera_activity_cap_video"
+                android:layout_margin="15dp"
+                android:textColor="@color/white"
+                android:background="@color/colornice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/camera_activity_cap_video"
+                android:text="按住录像 松开结束"
+                android:textColor="@color/white"
+                android:layout_margin="15dp"
+                android:background="@color/colornice"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <com.github.chrisbanes.photoview.PhotoView
+                android:id="@+id/camera_activity_cap_photoview"
+                android:visibility="invisible"
+                android:background="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

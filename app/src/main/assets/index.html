@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+</head>
+<body>
+
+<h1>
+    index.html
+</h1>
+
+    <button type="button" onclick="send()">弹出对话框</button><br/>
+
+    <pre>
+
+
+
+    </pre>
+    <button type="button" onclick="activityclose()">APP退出当前页</button><br/>
+    <script>
+        function send(){
+            Page.alertDialog();
+        }
+        function activityclose(){
+            Page.closeNowPage();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingTop="35dp"
+            android:paddingBottom="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.design.widget.TextInputLayout
+                android:hint="二维码内容"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent">
+
+                <EditText
+                    android:id="@+id/create_qrcode_edit_application_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="5"
+                    android:maxLines="5"
+                    android:textColor="@color/colorPrimary" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/create_qrcode_edit_application_create_button"
+                android:textColor="@color/colorPrimary"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="生成二维码"
+                android:background="@drawable/touch_background"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/create_qrcode_imageview"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="240dp"
+                android:layout_height="240dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

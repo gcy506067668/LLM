@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="online.letmesleep.androidapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <application
+        android:name=".MApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="LLM"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:allowBackup="true"
+        android:fullBackupContent="true">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="online.letmesleep.androidapplicationo"
+                    android:path="/"
+                    android:scheme="schemename" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".FirstActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity
+            android:name=".SecondActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity
+            android:name=".ThirdActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity
+            android:name=".FivthActivity"
+            android:theme="@style/WAppTheme"/>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="online.letmesleep.androidapplication.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".NineActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".TwelveActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".ForteenActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".ElevenActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".ThirteenActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".forthactivity.CameraActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".forthactivity.WifiActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".forthactivity.SMSSendActivity"
+            android:theme="@style/WAppTheme"/>
+
+
+        <receiver android:name=".forthactivity.SmsReceiver" android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_DELIVER" />
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+
+        <activity
+            android:name=".QRCode.QRCodeScannerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".QRCode.CreateQRCodeActivity" />
+        <activity android:name=".forthactivity.VoiceActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".EighteenActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".FivteenActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".facedetect.FaceDetectActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".NineteenActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".SixthActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".rtmp.RtmpSenderActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".SeventhActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".rtmp.RtmpReceiverActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name="io.vov.vitamio.activity.InitActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+
+    </application>
+
+</manifest>

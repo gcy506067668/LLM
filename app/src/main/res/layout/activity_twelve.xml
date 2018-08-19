@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NineActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.Toolbar>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/twelve_activity_url"
+                    android:textColor="@color/colornice"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:textColor="@color/colornice"
+                    android:id="@+id/twelve_activity_choosefile"
+                    android:text="选择文件"
+                    android:background="@drawable/touch_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+           <android.support.v7.widget.CardView
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+                <Button
+                    android:id="@+id/nine_activity_openurl"
+                    android:textColor="@color/colornice"
+                    android:text="打  开"
+                    android:background="@drawable/touch_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </android.support.v7.widget.CardView>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

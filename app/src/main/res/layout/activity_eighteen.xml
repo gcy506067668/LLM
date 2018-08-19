@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:keepScreenOn="true"
+    tools:context=".SecondActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/holo_red_light"
+        android:text="当前屏幕保持常亮"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
+
+        <TextView
+            android:layout_margin="8dp"
+            android:textColor="@color/colornice"
+            android:text="屏幕保持常亮有两种方法\n1.Window中设置FLAG\ngetWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);\n2.在控件中加入属性\nandroid:keepScreenOn='true'"
+            android:background="@drawable/touch_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+</LinearLayout>
