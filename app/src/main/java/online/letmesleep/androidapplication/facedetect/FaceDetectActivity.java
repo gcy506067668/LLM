@@ -1,9 +1,14 @@
 package online.letmesleep.androidapplication.facedetect;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +26,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.litepal.LitePal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import online.letmesleep.androidapplication.R;
@@ -59,7 +65,7 @@ public class FaceDetectActivity extends AppCompatActivity implements View.OnClic
         addLayer = findViewById(R.id.face_recognize_addface_layer);
         recLayer = findViewById(R.id.face_recognize_recognize_layer);
         delLayer = findViewById(R.id.face_recognize_deleteface_layer);
-
+        initPermission();
     }
 
     String action = null;
@@ -89,10 +95,11 @@ public class FaceDetectActivity extends AppCompatActivity implements View.OnClic
                 String username = ((TextInputLayout)findViewById(R.id.face_recognize_addface_name)).getEditText().getText().toString();
                 final FaceBean faceBean = new FaceBean();
                 faceBean.setUsername(username);
-                faceBean.setGroup_id("1");
+                faceBean.setGroup_id("letmesleep1");
                 int count = LitePal.count(FaceBean.class);
                 faceBean.setUser_id("user"+count);
                 dialog.show();
+
                 FaceRecognizeOnline.getInstance().addFace(imagePicPath, faceBean.getGroup_id(), faceBean.getUser_id(), new FaceRecognizeOnline.FaceCallback() {
                     @Override
                     public void onSuccess(String message) {
@@ -118,6 +125,7 @@ public class FaceDetectActivity extends AppCompatActivity implements View.OnClic
                         });
                     }
                 });
+
 
                 break;
 
@@ -169,6 +177,33 @@ public class FaceDetectActivity extends AppCompatActivity implements View.OnClic
     }
 
 
+    /**
+     * 权限申请
+     */
+    private void initPermission() {
+        String permissions[] = {
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        };
+
+        ArrayList<String> toApplyList = new ArrayList<String>();
+
+        for (String perm : permissions) {
+            if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(this, perm)) {
+                toApplyList.add(perm);
+                //进入到这里代表没有权限.
+            }
+        }
+        String tmpList[] = new String[toApplyList.size()];
+        if (!toApplyList.isEmpty()) {
+            ActivityCompat.requestPermissions(this, toApplyList.toArray(tmpList), 123);
+        }
+
+    }
+
+
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
@@ -182,14 +217,14 @@ public class FaceDetectActivity extends AppCompatActivity implements View.OnClic
 
                 if("recognize".equals(action)){
                     dialog.show();
-                    FaceRecognizeOnline.getInstance().searchFace(imagePicPath, "1", new FaceRecognizeOnline.FaceCallback() {
+                    FaceRecognizeOnline.getInstance().mutiSearchFace(imagePicPath, "letmesleep1", new FaceRecognizeOnline.FaceCallback() {
                         @Override
                         public void onSuccess(final String message) {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     dialog.dismiss();
-                                    ((TextView)findViewById(R.id.face_recognize_result)).setText("识别结果："+message);
+                                    ((TextView)findViewById(R.id.face_recognize_result)).setText(message);
                                 }
                             });
                         }
@@ -217,7 +252,4 @@ public class FaceDetectActivity extends AppCompatActivity implements View.OnClic
         finish();
         return super.onSupportNavigateUp();
     }
-
-
-
 }

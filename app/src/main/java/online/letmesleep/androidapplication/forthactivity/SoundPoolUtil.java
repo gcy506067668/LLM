@@ -3,6 +3,8 @@ package online.letmesleep.androidapplication.forthactivity;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 
 import java.util.HashMap;
 
@@ -12,6 +14,7 @@ import online.letmesleep.androidapplication.R;
 /**
  * Created by Letmesleep on 2018/4/14.
  */
+
 
 public class SoundPoolUtil {
     public static final int START_LISTENER = 1;

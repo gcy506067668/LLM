@@ -20,6 +20,8 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.READ_SMS"/>
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
     <application
         android:name=".MApplication"
         android:icon="@mipmap/ic_launcher"
@@ -29,10 +31,22 @@
         android:theme="@style/AppTheme"
         android:allowBackup="true"
         android:fullBackupContent="true">
+
+        <service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" />
+
+        <meta-data
+            android:name="com.baidu.speech.APP_ID"
+            android:value="***********" />
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="***********" />
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="***********" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -117,6 +131,8 @@
         <activity android:name=".SeventhActivity"
             android:theme="@style/WAppTheme"/>
         <activity android:name=".rtmp.RtmpReceiverActivity"
+            android:theme="@style/WAppTheme"/>
+        <activity android:name=".TwentyActivity"
             android:theme="@style/WAppTheme"/>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"

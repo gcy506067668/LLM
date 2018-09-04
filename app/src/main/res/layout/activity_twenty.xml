@@ -14,34 +14,50 @@
         android:layout_height="wrap_content">
 
     </android.support.v7.widget.Toolbar>
+
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
-    <Button
-        android:id="@+id/call_js_function"
-        android:background="@drawable/touch_background"
-        android:text="调用Webview JS函数"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_gravity="center"
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true">
 
-        <WebView
-            android:id="@+id/webview"
+        <ScrollView
+            android:scrollbars="none"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/activity_twenty_result"
+                android:layout_margin="8dp"
+                android:textColor="@color/colornice"
+                android:text="实时语音转写结果"
+                android:background="@drawable/touch_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
+
+        <Button
+            android:id="@+id/activity_twenty_start"
+            android:text="开  始"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/touch_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </android.support.v7.widget.CardView>
 
 

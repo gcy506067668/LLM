@@ -18,6 +18,9 @@ import java.util.List;
 
 import online.letmesleep.androidapplication.utils.OpenFileByOtherApp;
 
+/***
+ * 打开关联文件
+ */
 public class TwelveActivity extends AppCompatActivity {
 
     @Override

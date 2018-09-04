@@ -11,6 +11,11 @@ import android.view.WindowManager;
 import online.letmesleep.androidapplication.rtmp.RtmpReceiverActivity;
 import online.letmesleep.androidapplication.rtmp.RtmpSenderActivity;
 
+/*****
+ *      直播接收端
+ *
+ *      输入推流地址即可接收rtmp流
+ */
 public class SeventhActivity extends AppCompatActivity {
 
 
@@ -31,7 +36,7 @@ public class SeventhActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String rtmpAddress = ((TextInputLayout)findViewById(R.id.sixth_activity_tympaddress)).getEditText().getText().toString();
                 Intent intent = new Intent(SeventhActivity.this, RtmpReceiverActivity.class);
-                intent.putExtra("address",rtmpAddress);
+                intent.putExtra("address",APPConfig.BASE_STREAM_RUL+rtmpAddress);
                 startActivity(intent);
             }
         });

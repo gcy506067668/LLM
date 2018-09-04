@@ -13,6 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import online.letmesleep.androidapplication.QRCode.QRCodeScannerActivity;
 import online.letmesleep.androidapplication.adapter.MainAdapter;
+
 import online.letmesleep.androidapplication.facedetect.FaceDetectActivity;
 
 public class MainActivity extends BaseActivity implements BaseQuickAdapter.OnItemClickListener{
@@ -57,6 +58,7 @@ public class MainActivity extends BaseActivity implements BaseQuickAdapter.OnIte
         datas.add("17. 百度人脸识别");
         datas.add("18. 保持屏幕常亮");
         datas.add("19. 在app中用webview 组件加载页面，嵌入页面的脚本可以调用app的原生函数");
+        datas.add("20. 实时语音转写");
         adapter.notifyDataSetChanged();
     }
 
@@ -116,6 +118,9 @@ public class MainActivity extends BaseActivity implements BaseQuickAdapter.OnIte
                 break;
             case 18:
                 startActivity(NineteenActivity.class);
+                break;
+            case 19:
+                startActivity(TwentyActivity.class);
                 break;
         }
     }

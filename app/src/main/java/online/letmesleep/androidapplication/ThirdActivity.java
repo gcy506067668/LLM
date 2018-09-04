@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import online.letmesleep.androidapplication.utils.DownloadUtil;
 import online.letmesleep.androidapplication.webview.OpenOtherAppWebview;
 
+// TODO: 2018/8/22  浏览器多窗口模式未完成
 public class ThirdActivity extends AppCompatActivity {
 
 

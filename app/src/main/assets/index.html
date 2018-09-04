@@ -12,17 +12,21 @@
     <button type="button" onclick="send()">弹出对话框</button><br/>
 
     <pre>
-
-
+        
 
     </pre>
     <button type="button" onclick="activityclose()">APP退出当前页</button><br/>
+
+    <img src="test.jpg">
     <script>
         function send(){
             Page.alertDialog();
         }
         function activityclose(){
             Page.closeNowPage();
+        }
+        function androidCallJs(){
+            document.write("Hello Javascript,I am Adnroid!");
         }
     </script>
 </body>

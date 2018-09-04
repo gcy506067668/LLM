@@ -25,6 +25,12 @@ import butterknife.OnClick;
 import online.letmesleep.androidapplication.utils.DownloadUtil;
 import online.letmesleep.androidapplication.webview.OpenOtherAppWebview;
 
+/*******
+ *
+ *  更具webview指定URL打开某个特定的APP，被打开的APP应具有特殊接口
+ *  请参考伴随程序AndroidApplicationOpenA源码
+ *
+ */
 public class SecondActivity extends AppCompatActivity {
 
 
@@ -65,64 +71,6 @@ public class SecondActivity extends AppCompatActivity {
 
     }
 
-    /***
-     *  下载apk文件
-     */
-    private void downLoadApk() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                DownloadUtil.get().download(downloadUrl, "download", new DownloadUtil.OnDownloadListener() {
-                    @Override
-                    public void onDownloadSuccess(File file) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-
-                            }
-                        });
-                        installApk(file);
-                    }
-
-                    @Override
-                    public void onDownloading(final int progress) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onDownloadFailed() {
-
-                    }
-                });
-            }
-        }).start();
-    }
-
-
-    /****
-     *   安装APK文件
-     * @param file   apk文件存放路径
-     */
-    private void installApk(File file) {
-        Intent intent = new Intent("android.intent.action.VIEW");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-
-            Uri contentUri = FileProvider.getUriForFile(this, "online.letmesleep.androidapplication.fileProvider", file);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
-        } else {
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-        }
-        intent.addCategory("android.intent.category.DEFAULT");
-        startActivity(intent);
-    }
 
 
     /**
@@ -158,21 +106,6 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * 检查包是否存在
-     *
-     * @param packname
-     * @return
-     */
-    private boolean checkPackInfo(String packname) {
-        PackageInfo packageInfo = null;
-        try {
-            packageInfo = getPackageManager().getPackageInfo(packname, 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return packageInfo != null;
-    }
 
 
 

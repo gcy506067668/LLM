@@ -13,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +27,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.OnClick;
+import io.vov.vitamio.utils.Log;
 import online.letmesleep.androidapplication.utils.DownloadUtil;
 import online.letmesleep.androidapplication.voice.IFLYSpeaker;
 import online.letmesleep.androidapplication.voice.IFLYVoiceReader;
 import online.letmesleep.androidapplication.webview.OpenOtherAppWebview;
 
+/***
+ *  动态创建组件
+ */
 public class ElevenActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button createA;
@@ -68,11 +73,24 @@ public class ElevenActivity extends AppCompatActivity implements View.OnClickLis
         destoryB.setOnClickListener(this);
 
 
+        initData();
 
+
+    }
+    List<String> viewTagsA = new ArrayList<>();
+    List<String> viewTagsB = new ArrayList<>();
+    String parentTagA = "parentTagA";
+    String parentTagB = "parentTagB";
+
+    private void initData() {
+        for (int i = 0; i < 5; i++) {
+            viewTagsA.add("viewA"+i);
+            viewTagsB.add("viewB"+i);
+        }
     }
 
     List<ViewGroup> parents = new ArrayList<>();
-    List<View> views = new ArrayList<>();
+    List<TextView> views = new ArrayList<>();
 
     /****
      *
@@ -93,20 +111,27 @@ public class ElevenActivity extends AppCompatActivity implements View.OnClickLis
         if(!isExist){
             parentView = createParentViewByTag(parent);             //如果父布局不存在则创建父布局
         }
-
+        boolean flag = false;
         for (int i = 0; i < tags.size(); i++) {
             for (int j = 0; j < views.size(); j++) {
-                if(tags.get(i).equals(views.get(i).getTag())){     //此处表示当前tag组件存在   并且可以根据tag进行操作
-
-                    View operatorView = views.get(i); // TODO: 2018/8/13     根据自己的需要写逻辑
-                }else{                                              //此处表示前tag组件不存在 先创建 后操作
-                    View view = new View(this);
-                    view.setTag(tags.get(i));
-                    ((LinearLayout)parentView).addView(view);
-                    views.add(view);
-                    // TODO: 2018/8/13   根据自己的需要写逻辑
+                if(tags.get(i).equals(views.get(j).getTag())){     //此处表示当前tag组件存在   并且可以根据tag进行操作
+                    TextView operatorView = views.get(j); // TODO: 2018/8/13     根据自己的需要写逻辑
+                    operatorView.setText("该组件已经创建"+i);
+                    flag = true;
                 }
+
             }
+            if(flag){
+                flag = false;
+                continue;
+            }
+            //此处表示前tag组件不存在 先创建 后操作
+            TextView view = new TextView(this);
+            view.setTag(tags.get(i));
+            view.setText(tags.get(i));
+            ((LinearLayout)parentView).addView(view);
+            views.add(view);
+            // TODO: 2018/8/13   根据自己的需要写逻辑
 
         }
     }
@@ -119,9 +144,26 @@ public class ElevenActivity extends AppCompatActivity implements View.OnClickLis
      * @return
      */
     public ViewGroup createParentViewByTag(String tag){
-        ViewGroup parent = new LinearLayout(this);    //线性布局容器
+
+
+        //添加到根布局
+        if(tag.contains("A")){
+            groupA.setTag(tag);
+            parents.add(groupA);
+            return groupA;
+        }
+
+        if(tag.contains("B")){
+            groupB.setTag(tag);
+            parents.add(groupB);
+            return groupB;
+        }
+        LinearLayout parent = new LinearLayout(this);    //线性布局容器
+
+        parent.setHorizontalGravity(Gravity.VERTICAL_GRAVITY_MASK);
         parent.setTag(tag);
         parents.add(parent);
+
         return parent;
     }
 
@@ -144,57 +186,40 @@ public class ElevenActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.eleven_activity_create_a:
-                for (int i = 0; i < 5; i++) {
-                    TextView textView = new TextView(this);
-                    textView.setText("A列 "+i);
-                    textView.setTag("a_"+i);
-                    groupA.addView(textView);
-                }
-
+                createViewByTags(viewTagsA,parentTagA);
                 break;
             case R.id.eleven_activity_create_b:
-                for (int i = 0; i < 5; i++) {
-                    TextView textView = new TextView(this);
-                    textView.setText("B列 "+i);
-                    textView.setTag("b_"+i);
-
-                    groupB.addView(textView);
-                }
+                createViewByTags(viewTagsB,parentTagB);
                 break;
             case R.id.eleven_activity_destory_a:
-
-                List<View> viewsToRemove = new ArrayList<>();
+                List<View> tempA = new ArrayList<>();
                 for (int i = 0; i < groupA.getChildCount(); i++) {
-                    if(groupA.getChildAt(i) instanceof TextView){
-                        String tag = ((String)(groupA.getChildAt(i).getTag()));
-                        if(tag!=null){
-                            if(tag.contains("a_"))
-                                viewsToRemove.add(groupA.getChildAt(i));
-
-                        }
+                    String tagGa = ((String)groupA.getChildAt(i).getTag());
+                    if(tagGa==null)
+                        continue;
+                    if(tagGa.contains("A")){
+                        tempA.add(groupA.getChildAt(i));
                     }
                 }
-
-                for (int i = 0; i < viewsToRemove.size(); i++) {
-                    groupA.removeView(viewsToRemove.get(i));
+                for (View va:tempA) {
+                    groupA.removeView(va);
+                    views.remove(va);
                 }
 
                 break;
             case R.id.eleven_activity_destory_b:
-                List<View> bviewsToRemove = new ArrayList<>();
+                List<View> tempB = new ArrayList<>();
                 for (int i = 0; i < groupB.getChildCount(); i++) {
-                    if(groupB.getChildAt(i) instanceof TextView){
-                        String tag = ((String)(groupB.getChildAt(i).getTag()));
-                        if(tag!=null){
-                            if(tag.contains("b_"))
-                                bviewsToRemove.add(groupB.getChildAt(i));
-
-                        }
+                    String tagGa = ((String)groupB.getChildAt(i).getTag());
+                    if(tagGa==null)
+                        continue;
+                    if(((String)groupB.getChildAt(i).getTag()).contains("B")){
+                        tempB.add(groupB.getChildAt(i));
                     }
                 }
-
-                for (int i = 0; i < bviewsToRemove.size(); i++) {
-                    groupB.removeView(bviewsToRemove.get(i));
+                for (View va:tempB) {
+                    groupB.removeView(va);
+                    views.remove(va);
                 }
                 break;
         }

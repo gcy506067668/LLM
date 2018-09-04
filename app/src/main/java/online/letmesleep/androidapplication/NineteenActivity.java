@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
@@ -38,8 +39,14 @@ public class NineteenActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        initWebView();
 
+        initWebView();
+        findViewById(R.id.call_js_function).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.loadUrl("javascript:androidCallJs()");
+            }
+        });
     }
 
     private void initWebView() {
@@ -57,7 +64,7 @@ public class NineteenActivity extends AppCompatActivity {
         webView.setWebChromeClient(new MyWebChromeClient());
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
-        WebView.setWebContentsDebuggingEnabled(true);
+        webView.setWebContentsDebuggingEnabled(true);
     }
 
 
@@ -112,6 +119,7 @@ class MyWebChromeClient extends WebChromeClient {
     @Override
     public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
         Log.i(TAG, "onJsAlert");
+
         return true;
     }
 

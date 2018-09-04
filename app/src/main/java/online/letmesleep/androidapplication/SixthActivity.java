@@ -10,6 +10,11 @@ import android.view.WindowManager;
 
 import online.letmesleep.androidapplication.rtmp.RtmpSenderActivity;
 
+/****
+ *  直播推流端
+ *
+ *  red5 直播推流服务器搭建完毕以后输入服务器地址即可推流
+ */
 public class SixthActivity extends AppCompatActivity {
 
 
@@ -30,7 +35,7 @@ public class SixthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String rtmpAddress = ((TextInputLayout)findViewById(R.id.sixth_activity_tympaddress)).getEditText().getText().toString();
                 Intent intent = new Intent(SixthActivity.this, RtmpSenderActivity.class);
-                intent.putExtra("address",rtmpAddress);
+                intent.putExtra("address",APPConfig.BASE_STREAM_RUL+rtmpAddress);
                 startActivity(intent);
             }
         });

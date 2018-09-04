@@ -9,6 +9,8 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 
+import java.util.List;
+
 public class ImageUtil {
     /**
      * 根据Uri获取图片绝对路径，解决Android4.4以上版本Uri转换
@@ -109,4 +111,9 @@ public class ImageUtil {
     public static boolean isGooglePhotosUri(Uri uri) {
         return "com.google.android.apps.photos.content".equals(uri.getAuthority());
     }
+
+
+
+
+
 }

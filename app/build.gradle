@@ -27,7 +27,11 @@ android {
 
     sourceSets {main { res.srcDirs = ['src/main/res', 'src/main/res/menu'] } }
 
-
+    repositories {
+        flatDir {
+            dirs 'libs'   // aar目录
+        }
+    }
 }
 
 dependencies {
@@ -66,12 +70,15 @@ dependencies {
     implementation 'com.wonderkiln:camerakit:0.13.1'
     implementation 'cn.yipianfengye.android:zxing-library:2.2'
     implementation 'com.github.markushi:circlebutton:1.1'
-    implementation files('libs/aip-java-sdk-4.3.2.jar')
-    implementation files('libs/json-20160810.jar')
-    implementation files('libs/log4j-1.2.17.jar')
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     compile project(path: ':liveRtmpPushSDK')
     implementation project(':vitamio')
+    implementation project(':libsphone')
+    implementation files('libs/aip-java-sdk-4.3.2.jar')
+    implementation files('libs/json-20160810.jar')
+    implementation files('libs/log4j-1.2.17.jar')
+
+    implementation files('libs/bdasr_V3_20180801_d6f298a.jar')
 }

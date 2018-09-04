@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+/***
+ *  发送广播 浏览器打开制定地址
+ */
 public class NineActivity extends AppCompatActivity {
 
     @Override

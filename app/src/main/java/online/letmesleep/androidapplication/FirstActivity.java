@@ -25,6 +25,10 @@ import java.util.ArrayList;
 
 import online.letmesleep.androidapplication.utils.DownloadUtil;
 
+/****
+ * @author Letmesleep
+ * 通过APP包名来判断该APP是否已经安装，如果安装则启动APP 否则根据下载地址自动下载并安装APP
+ */
 public class FirstActivity extends AppCompatActivity {
 
 
@@ -33,6 +37,7 @@ public class FirstActivity extends AppCompatActivity {
     ProgressBar downpercent;
     LinearLayout downloadLayout;
 
+    /***           下载地址          此处以腾讯QQ为例    ***/
     String downloadUrl = "https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk";
 
     @Override
